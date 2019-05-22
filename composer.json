@@ -1,4 +1,4 @@
-{hpunit version
+{
   "autoload": {
     "psr-4": {
       "LittleChou\\LineLogin\\" : "src/"
