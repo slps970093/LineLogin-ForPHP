@@ -10,7 +10,7 @@ class ConfigManagerTest extends TestCase
      */
     private $config;
 
-    const CLIENT_ID  = 'state';
+    const CLIENT_ID  = 'client_id';
 
     const CLIENT_SECRET = 'client_secret';
 
