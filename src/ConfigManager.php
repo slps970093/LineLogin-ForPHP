@@ -19,22 +19,31 @@ class ConfigManager{
     
     const CLIENT_SCOPE = 'client_scope';
 
+    const CLIENT_REDIRECT_URI = 'redirect_uri';
+
     public function __construct(){
         $this->config = new \ArrayObject();
     }
 
     public function setClientId($id){
         $this->config->{ self::CLIENT_ID } = $id;
+        return $this;
     }
 
     public function setClientSecret($secret){
         $this->config->{ self::CLIENT_SCOPE } = $secret;
+        return $this;
     }
 
     public function setScope($scope){
         $this->config->{ self::CLIENT_SCOPE } = urlencode($scope);
+        return $this;
     }
 
+    public function setRedirectUri($uri){
+        $this->config->{ self::CLIENT_REDIRECT_URI } = $uri;
+        return $this;
+    }
     /**
      * @return \ArrayObject
      */

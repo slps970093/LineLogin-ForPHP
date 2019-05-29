@@ -16,11 +16,11 @@ class LineAuthorization{
         $config = $this->configManager->getConfigs();
 
         $parameter = [
-            'response_type' => urlencode('code'),
-            'client_id' => urlencode($config->client_id),
-            'scope' => urlencode($config->client_scope),
-            'state' => urlencode('helloworld'),
-            'redirect_uri' => $host.'/callback'
+            'response_type' => 'code',
+            'client_id' => $config->client_id,
+            'scope' => $config->client_scope,
+            'state' => uniqid(15),
+            'redirect_uri' => $config->redirect_uri
         ];
 
         if(count($appendParameter) != 0){
