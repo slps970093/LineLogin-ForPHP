@@ -34,15 +34,15 @@ class LineAuthorizationTest extends TestCase{
             'redirect_uri' => $host.'/callback'
         ];
 
-        $newUrl = self::getUrl($host,$parameter);
+        $newUrl = $host . "?" . http_build_query($parameter);
 
         $afterCreateUrl = $host . "?response_type=". urlencode('code') .
             "&client_id=". $config->client_id .
             "&scope=". urlencode($config->client_scope) .
             "&state=". urlencode('helloworld') .
-            "&redirect_uri=". $host ."/callback";
+            "&redirect_uri=". urlencode($host ."/callback");
 
-        $this->assertEquals($newUrl,$afterCreateUrl);
+        $this->assertEquals($afterCreateUrl,$newUrl);
     }
 
     /**
@@ -62,31 +62,16 @@ class LineAuthorizationTest extends TestCase{
         ];
 
         $parameter = array_merge($parameter,['hello' => urlencode('world')]);
-        $newUrl = self::getUrl($host,$parameter);
+        $newUrl = $host . "?" . http_build_query($parameter);
 
         $afterCreateUrl = $host . "?response_type=". urlencode('code') .
             "&client_id=". $config->client_id .
             "&scope=". urlencode($config->client_scope) .
             "&state=". urlencode('helloworld') .
-            "&redirect_uri=". $host ."/callback" .
+            "&redirect_uri=". urlencode($host ."/callback") .
             "&hello=".urlencode('world');
 
         $this->assertEquals($newUrl,$afterCreateUrl);
     }
-
-    private function getUrl($host,$parameter){
-        $url = $host;
-        $count = 0;
-        foreach ($parameter as $key => $value){
-            if ($count == 0){
-                $url .= "?" . $key . "=" . $value;
-            }else{
-                $url .= "&" . $key . "=" . $value;
-            }
-            $count++;
-        }
-        return $url;
-    }
-
 
 }

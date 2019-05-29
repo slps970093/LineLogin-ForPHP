@@ -29,22 +29,10 @@ class LineAuthorization{
 
         $host = "http://" . $_SERVER['SERVER_NAME'] . $uri ;
 
-        $url = $this->getUrl($host,$parameter);
+        $url = $host . "?" . http_build_query($parameter);
 
         return $url;
     }
 
-    private function getUrl($host,$parameter){
-        $url = $host;
-        $count = 0;
-        foreach ($parameter as $key => $value){
-            if ($count == 0){
-                $url .= "?" . $key . "=" . $value;
-            }else{
-                $url .= "&" . $key . "=" . $value;
-            }
-            $count++;
-        }
-        return $url;
-    }
+
 }
