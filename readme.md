@@ -3,26 +3,48 @@
 [![Build Status](https://travis-ci.org/slps970093/LineLogin-ForPHP.svg?branch=master)](https://travis-ci.org/slps970093/LineLogin-ForPHP)
 
 
-<h3>Laravel 安裝教學</h3>
+> <h3>Laravel 安裝教學</h3>
 
-1. Composer 安裝
+- Composer 安裝
+- 在 .env 新增以下參數 並填寫相關 LINE API 所需資訊
 
-2. 在 .env 新增以下參數
+```
+LINE_CLIENT_ID = 
+LINE_REDIRECT_URI = 
+LINE_REDIRECT_SECRET = 
+LINE_SCOPE = 
+```
 
-<code>
-LINE_CLIENT_ID = <br />
-LINE_REDIRECT_URI = <br />
-LINE_REDIRECT_SECRET = <br />
-LINE_SCOPE = <br /> 
-</code><br />
-3. 調整 app\config\app.php 找到 providers 並新增
+- 調整 app\config\app.php 找到 providers 並新增
 
-<code>
-        LittleChou\LineLogin\ServiceProvider\LineLoginServiceProvider::class,
+```
+LittleChou\LineLogin\ServiceProvider\LineLoginServiceProvider::class,
+```
+
 </code>
 
-4. 調整 app\config\app.php 找到 aliases 並新增
+- 調整 app\config\app.php 找到 aliases 並新增
 
-<code>
+```
 'LineProfile' => LittleChou\LineLogin\Facades\LineProfile::class,
-</code>
+```
+
+> <h3>使用說明</h3>
+
+- 在你的 Blade 裡面 填寫以下程式碼
+
+```
+@lineloginlink()
+```
+
+- 接著 在你 CallBack 的 Controller 裡面的 function 中 填寫以下程式碼 即可取得 Line 使用者資訊
+
+```PHP
+public function lineCallBackProfile(Request $request){
+
+    $code = $request->get('code');
+    
+    $profile = LineProfile::getProfile($code);
+    
+}
+```
