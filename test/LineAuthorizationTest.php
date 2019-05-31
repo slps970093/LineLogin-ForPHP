@@ -24,7 +24,7 @@ class LineAuthorizationTest extends TestCase{
     public function createUrl(){
         $config = $this->config;
 
-        $host = 'http://miles.com';
+        $host = 'https://access.line.me/oauth2/v2.1/authorize';
 
         $parameter = [
             'response_type' => urlencode('code'),
@@ -45,33 +45,6 @@ class LineAuthorizationTest extends TestCase{
         $this->assertEquals($afterCreateUrl,$newUrl);
     }
 
-    /**
-     * @test
-     */
-    public function createUrlAppend(){
-        $config = $this->config;
 
-        $host = 'http://miles.com';
-
-        $parameter = [
-            'response_type' => urlencode('code'),
-            'client_id' => urlencode($config->client_id),
-            'scope' => urlencode($config->client_scope),
-            'state' => urlencode('helloworld'),
-            'redirect_uri' => $host.'/callback'
-        ];
-
-        $parameter = array_merge($parameter,['hello' => urlencode('world')]);
-        $newUrl = $host . "?" . http_build_query($parameter);
-
-        $afterCreateUrl = $host . "?response_type=". urlencode('code') .
-            "&client_id=". $config->client_id .
-            "&scope=". urlencode($config->client_scope) .
-            "&state=". urlencode('helloworld') .
-            "&redirect_uri=". urlencode($host ."/callback") .
-            "&hello=".urlencode('world');
-
-        $this->assertEquals($newUrl,$afterCreateUrl);
-    }
 
 }

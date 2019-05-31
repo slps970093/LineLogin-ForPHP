@@ -12,7 +12,7 @@ class LineAuthorization{
         $this->configManager = $configManager;
     }
 
-    public function createAuthUrl($uri,$appendParameter = []){
+    public function createAuthUrl(){
         $config = $this->configManager->getConfigs();
 
         $parameter = [
@@ -23,11 +23,7 @@ class LineAuthorization{
             'redirect_uri' => $config->redirect_uri
         ];
 
-        if(count($appendParameter) != 0){
-            $parameter = array_merge($parameter,$appendParameter);
-        }
-
-        $host = "http://" . $_SERVER['SERVER_NAME'] . $uri ;
+        $host = "https://access.line.me/oauth2/v2.1/authorize" ;
 
         $url = $host . "?" . http_build_query($parameter);
 
