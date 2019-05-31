@@ -4,6 +4,7 @@
 use PHPUnit\Framework\TestCase;
 
 class LineAuthorizationTest extends TestCase{
+
     /**
      * @var ArrayObject
      */

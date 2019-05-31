@@ -12,6 +12,12 @@ class LineAuthorization{
         $this->configManager = $configManager;
     }
 
+    /**
+     * 產生 Line Authorization Url
+     *
+     * @see https://developers.line.biz/en/docs/line-login/web/integrate-line-login/
+     * @return string
+     */
     public function createAuthUrl(){
         $config = $this->configManager->getConfigs();
 

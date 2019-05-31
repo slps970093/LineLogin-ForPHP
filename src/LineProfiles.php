@@ -19,6 +19,8 @@ class LineProfiles{
 
     /**
      * 取得用戶端 Profile
+     *
+     * @see https://developers.line.biz/en/docs/social-api/getting-user-profiles/
      * @param $code
      * @return bool|mixed|string
      * @throws LineAccessTokenNotFoundException
@@ -43,6 +45,8 @@ class LineProfiles{
 
     /**
      * 取得用戶端 Access Token
+     *
+     * @see https://developers.line.biz/en/docs/line-login/web/integrate-line-login/
      * @param $code
      * @return string
      * @throws LineAccessTokenNotFoundException
