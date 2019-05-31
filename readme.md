@@ -31,10 +31,10 @@ LittleChou\LineLogin\ServiceProvider\LineLoginServiceProvider::class,
 
 > <h3>使用說明</h3>
 
-- 在你的 Blade 裡面 填寫以下程式碼
+- 在你的 Blade 裡面 填寫以下程式碼，會產生認證網址
 
 ```
-@lineloginlink()
+<a href="@lineloginlink()">Line Login</a>
 ```
 
 - 接著 在你 CallBack 的 Controller 裡面的 function 中 填寫以下程式碼 即可取得 Line 使用者資訊
