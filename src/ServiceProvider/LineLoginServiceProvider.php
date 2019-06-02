@@ -4,7 +4,6 @@
 namespace LittleChou\LineLogin\ServiceProvider;
 
 
-;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use LittleChou\LineLogin\ConfigManager;
