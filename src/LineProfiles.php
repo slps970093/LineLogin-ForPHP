@@ -25,7 +25,7 @@ class LineProfiles{
      * @return bool|mixed|string
      * @throws LineAccessTokenNotFoundException
      */
-    public function getProfile($code){
+    public function get($code){
         $accessToken = self::getAccessToken($code);
         $headerData = array(
             "content-type: application/x-www-form-urlencoded",

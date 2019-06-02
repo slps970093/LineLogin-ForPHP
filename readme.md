@@ -44,7 +44,7 @@ public function lineCallBackProfile(Request $request){
 
     $code = $request->get('code');
     
-    $profile = LineProfile::getProfile($code);
+    $profile = LineProfile::get($code);
     
 }
 ```
