@@ -21,17 +21,17 @@ class LineAuthorization{
     public function createAuthUrl(){
         $config = $this->configManager->getConfigs();
 
+        $scope = str_replace(",","%20",urldecode($config->{ $this->configManager::CLIENT_SCOPE }));
         $parameter = [
             'response_type' => 'code',
-            'client_id' => $config->client_id,
-            'scope' => $config->client_scope,
+            'client_id' => $config->{ $this->configManager::CLIENT_ID },
             'state' => uniqid(15),
             'redirect_uri' => $config->redirect_uri
         ];
 
         $host = "https://access.line.me/oauth2/v2.1/authorize" ;
 
-        $url = $host . "?" . http_build_query($parameter);
+        $url = $host . "?" . http_build_query($parameter) . "&scope=". $scope;
 
         return $url;
     }

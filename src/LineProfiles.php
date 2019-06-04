@@ -14,7 +14,7 @@ class LineProfiles{
     private $configManager;
 
     public function __construct(ConfigManager $configManager){
-        $this->config = $configManager;
+        $this->configManager = $configManager;
     }
 
     /**
@@ -33,7 +33,7 @@ class LineProfiles{
             'Authorization: Bearer '.$accessToken,
         );
         $ch = curl_init();
-        curl_setopt($ch, CURLOPT_HTTPHEADER,$headerData);
+        curl_setopt($ch, CURLOPT_HTTPHEADER ,$headerData);
         curl_setopt($ch , CURLOPT_URL , "https://api.line.me/v2/profile");
         curl_setopt($ch, CURLOPT_RETURNTRANSFER , 1);
 

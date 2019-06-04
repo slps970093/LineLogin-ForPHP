@@ -17,15 +17,11 @@ class LineLoginServiceProvider extends ServiceProvider{
             $obj = new ConfigManager();
             $obj->setClientId(env('LINE_CLIENT_ID'))
                 ->setRedirectUri(env('LINE_REDIRECT_URI'))
-                ->setClientSecret(env('LINE_REDIRECT_SECRET'))
+                ->setClientSecret(env('LINE_CLIENT_SECRET'))
                 ->setScope(env('LINE_SCOPE'));
             return $obj;
         });
 
-        $this->app->bind('LineProfile', function (){
-            $profile = $this->app->make(LineProfiles::class);
-            return $profile;
-        });
 
 
     }
@@ -36,6 +32,11 @@ class LineLoginServiceProvider extends ServiceProvider{
             $auth = $this->app->make(LineAuthorization::class);
             return  $auth->createAuthUrl($uri);
         });
+        $this->app->bind('LineProfile', function (){
+            $profile = $this->app->make(LineProfiles::class);
+            return $profile;
+        });
+
 
     }
 }

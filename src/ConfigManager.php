@@ -31,7 +31,7 @@ class ConfigManager{
     }
 
     public function setClientSecret($secret){
-        $this->config->{ self::CLIENT_SCOPE } = $secret;
+        $this->config->{ self::CLIENT_SECRET } = $secret;
         return $this;
     }
 

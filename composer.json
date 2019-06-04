@@ -1,4 +1,5 @@
 {
+  "name": "littlechou/line-login",
   "autoload": {
     "psr-4": {
       "LittleChou\\LineLogin\\" : "src/"
