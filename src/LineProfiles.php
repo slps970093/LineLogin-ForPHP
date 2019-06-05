@@ -62,7 +62,7 @@ class LineProfiles{
         ];
         $ch = curl_init();
         curl_setopt($ch , CURLOPT_URL , "https://api.line.me/oauth2/v2.1/token");
-        curl_setopt($ch, CURLOPT_HTTPheader, array('Content-type: application/x-www-form-urlencoded'));
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-type: application/x-www-form-urlencoded'));
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query( $post ));
         curl_setopt($ch, CURLOPT_RETURNTRANSFER , 1);

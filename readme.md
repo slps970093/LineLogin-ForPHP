@@ -37,9 +37,11 @@ LittleChou\LineLogin\ServiceProvider\LineLoginServiceProvider::class,
 <a href="@lineloginlink()">Line Login</a>
 ```
 
-- 接著 在你 CallBack 的 Controller 裡面的 function 中 填寫以下程式碼 即可取得 Line 使用者資訊
+- 接著 在你 CallBack 的 Controller 裡面的 function 中 填寫以下程式碼 即可取得 Line 使用者資訊，並使用命名空間
 
 ```PHP
+use LineProfile; 
+
 public function lineCallBackProfile(Request $request){
 
     $code = $request->get('code');

@@ -36,7 +36,7 @@ class ConfigManager{
     }
 
     public function setScope($scope){
-        $this->config->{ self::CLIENT_SCOPE } = urlencode($scope);
+        $this->config->{ self::CLIENT_SCOPE } = $scope;
         return $this;
     }
 

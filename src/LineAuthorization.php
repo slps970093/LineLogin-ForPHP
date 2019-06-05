@@ -21,7 +21,7 @@ class LineAuthorization{
     public function createAuthUrl(){
         $config = $this->configManager->getConfigs();
 
-        $scope = str_replace(",","%20",urldecode($config->{ $this->configManager::CLIENT_SCOPE }));
+        $scope = str_replace(",","%20",$config->{ $this->configManager::CLIENT_SCOPE });
         $parameter = [
             'response_type' => 'code',
             'client_id' => $config->{ $this->configManager::CLIENT_ID },
