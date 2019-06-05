@@ -27,11 +27,11 @@ class LineProfiles{
      */
     public function get($code){
         $accessToken = self::getAccessToken($code);
-        $headerData = array(
+        $headerData = [
             "content-type: application/x-www-form-urlencoded",
             "charset=UTF-8",
             'Authorization: Bearer '.$accessToken,
-        );
+        ];
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_HTTPHEADER ,$headerData);
         curl_setopt($ch , CURLOPT_URL , "https://api.line.me/v2/profile");
@@ -62,7 +62,7 @@ class LineProfiles{
         ];
         $ch = curl_init();
         curl_setopt($ch , CURLOPT_URL , "https://api.line.me/oauth2/v2.1/token");
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-type: application/x-www-form-urlencoded'));
+        curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-type: application/x-www-form-urlencoded']);
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query( $post ));
         curl_setopt($ch, CURLOPT_RETURNTRANSFER , 1);
