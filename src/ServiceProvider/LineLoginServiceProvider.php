@@ -21,13 +21,9 @@ class LineLoginServiceProvider extends ServiceProvider{
                 ->setScope(env('LINE_SCOPE'));
             return $obj;
         });
-
-
-
     }
 
     public function boot(){
-
         Blade::directive('lineloginlink',function ($uri) {
             $auth = $this->app->make(LineAuthorization::class);
             return  $auth->createAuthUrl($uri);
@@ -36,7 +32,5 @@ class LineLoginServiceProvider extends ServiceProvider{
             $profile = $this->app->make(LineProfiles::class);
             return $profile;
         });
-
-
     }
 }
