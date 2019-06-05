@@ -6,6 +6,9 @@
 > <h3>Laravel 安裝教學</h3>
 
 - Composer 安裝
+```
+composer require littlechou/line-login
+```
 - 在 .env 新增以下參數 並填寫相關 LINE API 所需資訊
 
 ```
