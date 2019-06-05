@@ -24,7 +24,7 @@ class LineProfileTest extends TestCase{
     /**
      * @test
      */
-    public function createAccessTokenPostField(){
+    public function callApiGetAccessTokens(){
         $code = "123456798";
 
         $postData = [
@@ -35,15 +35,37 @@ class LineProfileTest extends TestCase{
             'client_secret' => $this->configs->client_secret
         ];
 
+        $res = $this->fakeApiGetAccessToken($postData);
+
+        $this->assertEquals("tokenDemo",$res['access_token']);
+    }
+
+    /**
+     * Fake Api 用於模擬 Line Server 回傳資訊 (Access Token)
+     * @param $postData
+     * @return array|null
+     */
+    private function fakeApiGetAccessToken($postData){
         $afterRes = [
             'grant_type' => 'authorization_code',
-            'code' => $code,
+            'code' => "123456798",
             'redirect_uri' => 'http://miles.com',
             'client_id' => 'hello',
             'client_secret' => 'world'
         ];
 
-        $this->assertEquals($afterRes,$postData);
+        if (count(array_diff($postData,$afterRes)) == 0){
+            return [
+                'access_token' => "tokenDemo",
+                'token_type' => 'Bearer',
+                'refresh_token' => uniqid(20),
+                'expires_in' => 26400,
+                'scope' => 'profile openid',
+                'id_token' => md5(uniqid())
+            ];
+        }
+
+        return null;
     }
 
     /**
@@ -57,13 +79,39 @@ class LineProfileTest extends TestCase{
             'Authorization: Bearer '.$token,
         ];
 
+        $res = $this->fakeApiGetUserProfile($header);
+
+        $after = [
+            'userId' => "6666",
+            'displayName' => 'LineUserFake',
+            'pictureUrl' => 'https://profile.line-scdn.net/666666',
+            'statusMessage' => '777'
+        ];
+
+        $this->assertEquals($after,$res);
+    }
+
+    /**
+     * Fake Api 用於模擬 Line Server 回傳資訊 (Profile)
+     * @param $header
+     * @return array|null
+     */
+    public function fakeApiGetUserProfile($header){
         $afterHeader = [
             "content-type: application/x-www-form-urlencoded",
             "charset=UTF-8",
             'Authorization: Bearer hello_World',
         ];
 
-        $this->assertEquals($afterHeader,$header);
-    }
+        if (count(array_diff($afterHeader,$header)) == 0){
+            return [
+                'userId' => "6666",
+                'displayName' => 'LineUserFake',
+                'pictureUrl' => 'https://profile.line-scdn.net/666666',
+                'statusMessage' => '777'
+            ];
+        }
 
+        return null;
+    }
 }

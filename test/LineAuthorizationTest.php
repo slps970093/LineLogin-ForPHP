@@ -22,7 +22,7 @@ class LineAuthorizationTest extends TestCase{
     /**
      * @test
      */
-    public function createUrl(){
+    public function createAuthUrl(){
         $config = $this->config;
 
         $host = 'https://access.line.me/oauth2/v2.1/authorize';
