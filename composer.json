@@ -1,5 +1,18 @@
 {
   "name": "littlechou/line-login",
+  "license": "MIT",
+  "keywords": [
+    "line","login"
+  ],
+  "authors": [
+    {
+      "name": "Yu-Hsien, Chou",
+      "email": "slps970093@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.4"
+  },
   "autoload": {
     "psr-4": {
       "LittleChou\\LineLogin\\" : "src/"
