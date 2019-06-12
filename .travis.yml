@@ -11,7 +11,7 @@ before_script:
   - composer update
 
 script:
-  - vendor/bin/phpunit -c phpunit.xml --coverage-clover=coverage.xml
+  - vendor/bin/phpunit -c phpunit.xml --coverage-clover=clover.xml
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
