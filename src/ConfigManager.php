@@ -6,11 +6,9 @@
 namespace LittleChou\LineLogin;
 
 
-class ConfigManager{
+class ConfigManager {
 
-    /**
-     * @var \ArrayObject
-     */
+
     private $config;
 
     const CLIENT_ID = 'client_id';
@@ -21,34 +19,30 @@ class ConfigManager{
 
     const CLIENT_REDIRECT_URI = 'redirect_uri';
 
-    public function __construct(){
-        $this->config = new \ArrayObject();
-    }
-
-    public function setClientId($id){
-        $this->config->{ self::CLIENT_ID } = $id;
+    public function setClientId($id) {
+        $this->config[ self::CLIENT_ID ] = $id;
         return $this;
     }
 
-    public function setClientSecret($secret){
-        $this->config->{ self::CLIENT_SECRET } = $secret;
+    public function setClientSecret($secret) {
+        $this->config[ self::CLIENT_SECRET ] = $secret;
         return $this;
     }
 
-    public function setScope($scope){
-        $this->config->{ self::CLIENT_SCOPE } = $scope;
+    public function setScope($scope) {
+        $this->config[ self::CLIENT_SCOPE ] = $scope;
         return $this;
     }
 
-    public function setRedirectUri($uri){
-        $this->config->{ self::CLIENT_REDIRECT_URI } = $uri;
+    public function setRedirectUri($uri) {
+        $this->config[ self::CLIENT_REDIRECT_URI ]= $uri;
         return $this;
     }
     /**
      * @return \ArrayObject
      */
-    public function getConfigs(){
-        return $this->config;
+    public function getConfigs() {
+        return new \ArrayObject($this->config);
     }
 
 }
