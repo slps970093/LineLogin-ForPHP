@@ -10,7 +10,11 @@ php:
 before_script:
   - composer update
 
-script: vendor/bin/phpunit -c phpunit.xml
+script:
+  - vendor/bin/phpunit -c phpunit.xml --coverage-clover=coverage.xml
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
 
 notifications:
   email:
