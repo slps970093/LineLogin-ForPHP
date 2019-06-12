@@ -14,6 +14,7 @@ script:
   - vendor/bin/phpunit -c phpunit.xml
 
 after_success:
+  - vendor/bin/phpunit -c phpunit.xml --coverage-clover=coverage.xml
   - bash <(curl -s https://codecov.io/bash)
 
 notifications:
