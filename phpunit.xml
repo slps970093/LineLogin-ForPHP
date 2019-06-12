@@ -9,6 +9,18 @@
         <whitelist processUncoveredFilesFromWhitelist="true">
             <directory suffix=".php">./src</directory>
         </whitelist>
+
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">./src/Facade/</directory>
+        </whitelist>
+
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">./src/ServiceProvider/</directory>
+        </whitelist>
+
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">./src/Exceptions/</directory>
+        </whitelist>
     </filter>
     <logging>
         <log type="coverage-clover" target="coverage.xml"/>
