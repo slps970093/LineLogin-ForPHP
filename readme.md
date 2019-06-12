@@ -2,7 +2,10 @@
 
 [![Build Status](https://travis-ci.org/slps970093/LineLogin-ForPHP.svg?branch=master)](https://travis-ci.org/slps970093/LineLogin-ForPHP)
 
-
+> <h3>環境要求</h3>
+- PHP 5.4 以上
+- PHP-CURL
+- Laravel 5.2 以上 （非必要）
 > <h3>Laravel 安裝教學</h3>
 
 - Composer 安裝
@@ -51,5 +54,50 @@ public function lineCallBackProfile(Request $request){
     
     $profile = LineProfile::get($code);
     
+}
+```
+
+> <h3>非 Laravel 環境下使用方法</h3>
+
+<b>以下為 CodeIgniter 3 做為範本</b>
+
+```PHP
+use LittleChou\LineLogin\ConfigManager;
+use LittleChou\LineLogin\LineProfiles;
+use LittleChou\LineLogin\LineAuthorization;
+
+class LineController extends CI_Controller {
+
+    private $lineConfig;
+
+    public function __construct() {
+        $config = new ConfigManager();
+        $config->setRedirectUri("YOUR-REDIRECT-URI")
+            ->setScope("YOUR-SCOPE")
+            ->setClientSecret("YOUR-CLINET-SECRET")
+            ->setClientId("YOUR-CLIENT-ID");
+        $this->lineConfig = $config;
+    }
+
+    /**
+     * 產生連結
+     *
+     */
+    public function lineLogin() {
+        $auth = new LineAuthorization($this->lineConfig);
+        echo $auth->createAuthUrl();
+    }
+
+    /**
+     * 取得使用者資訊
+     *
+     */
+    public function getLineProfile() {
+        $code = $this->input->get('code');
+
+        $lineProfile = new LineProfiles($this->lineConfig);
+
+        $profile = $lineProfile->get($code);
+    }
 }
 ```
