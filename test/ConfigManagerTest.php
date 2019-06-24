@@ -5,6 +5,7 @@ use PHPUnit\Framework\TestCase;
 use LittleChou\LineLogin\ConfigManager;
 
 class ConfigManagerTest extends TestCase {
+
     /**
      * @var ConfigManager
      */

@@ -13,6 +13,16 @@
   "require": {
     "php": ">=5.4"
   },
+  "extra": {
+    "laravel": {
+      "providers" : [
+        "LittleChou\\LineLogin\\ServiceProvider\\LineLoginServiceProvider::class"
+      ],
+      "aliases": {
+        "LineProfile": "LittleChou\\LineLogin\\Facades\\LineProfile::class"
+      }
+    }
+  },
   "autoload": {
     "psr-4": {
       "LittleChou\\LineLogin\\" : "src/"

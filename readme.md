@@ -1,7 +1,7 @@
 # Line Login For PHP (dev) unofficial 
 
 [![Build Status](https://travis-ci.org/slps970093/LineLogin-ForPHP.svg?branch=master)](https://travis-ci.org/slps970093/LineLogin-ForPHP)
-[![codecov](https://codecov.io/gh/slps970093/LineLogin-ForPHP/branch/master/graph/badge.svg)](https://codecov.io/gh/slps970093/LineLogin-ForPHP)
+
 
 > <h3>環境要求</h3>
 - PHP 5.4 以上
