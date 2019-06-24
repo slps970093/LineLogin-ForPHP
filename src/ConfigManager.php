@@ -39,10 +39,10 @@ class ConfigManager {
         return $this;
     }
     /**
-     * @return \ArrayObject
+     * @return array
      */
     public function getConfigs() {
-        return new \ArrayObject($this->config);
+        return $this->config;
     }
 
 }

@@ -56,9 +56,9 @@ class LineProfiles{
         $post = [
             'grant_type' => 'authorization_code',
             'code' => $code,
-            'redirect_uri' => $config->{ $this->configManager::CLIENT_REDIRECT_URI },
-            'client_id' => $config->{ $this->configManager::CLIENT_ID },
-            'client_secret' => $config->{ $this->configManager::CLIENT_SECRET },
+            'redirect_uri' => $config[ $this->configManager::CLIENT_REDIRECT_URI  ],
+            'client_id' => $config[ $this->configManager::CLIENT_ID ],
+            'client_secret' => $config[ $this->configManager::CLIENT_SECRET ],
         ];
         $ch = curl_init();
         curl_setopt($ch , CURLOPT_URL , "https://api.line.me/oauth2/v2.1/token");

@@ -26,7 +26,7 @@ class ConfigManagerTest extends TestCase {
      * @test
      */
     public function configTest() {
-        $createData = $this->config->getConfigs()->getArrayCopy();
+        $createData = $this->config->getConfigs();
 
         $afterData = [
             'client_id' => 'YYY',

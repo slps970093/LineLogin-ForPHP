@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 class LineProfileTest extends TestCase{
 
     /**
-     * @var ArrayObject
+     * @var array
      */
     private $configs;
 
@@ -14,11 +14,12 @@ class LineProfileTest extends TestCase{
      * @before
      */
     public function testBefore(){
-        $this->configs = new ArrayObject();
-        $this->configs->client_id = 'hello';
-        $this->configs->client_secret = 'world';
-        $this->configs->client_scope = 'aaaa';
-        $this->configs->redirect_uri = 'http://miles.com';
+        $this->configs = [
+            'client_id' => 'hello',
+            'client_secret' => 'world',
+            'client_scope' => 'aaaa',
+            'redirect_uri' => 'http://miles.com'
+        ];
     }
 
     /**
@@ -30,9 +31,9 @@ class LineProfileTest extends TestCase{
         $postData = [
             'grant_type' => 'authorization_code',
             'code' => $code,
-            'redirect_uri' => $this->configs->redirect_uri,
-            'client_id' => $this->configs->client_id,
-            'client_secret' => $this->configs->client_secret
+            'redirect_uri' => $this->configs['redirect_uri'],
+            'client_id' => $this->configs['client_id'],
+            'client_secret' => $this->configs['client_secret']
         ];
 
         $res = $this->fakeApiGetAccessToken($postData);

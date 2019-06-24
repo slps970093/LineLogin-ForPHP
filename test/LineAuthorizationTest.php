@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 class LineAuthorizationTest extends TestCase{
 
     /**
-     * @var ArrayObject
+     * @var array
      */
     private $config;
 
@@ -14,9 +14,10 @@ class LineAuthorizationTest extends TestCase{
      * @before
      */
     public function beforeTest(){
-        $this->config =  new ArrayObject();
-        $this->config->client_id = 'helloworld';
-        $this->config->client_scope = urlencode('HelloASSS');
+        $this->config = [
+            'client_id' => 'helloworld',
+            'client_scope' => urlencode('HelloASSS')
+        ];
     }
 
     /**
@@ -29,8 +30,8 @@ class LineAuthorizationTest extends TestCase{
 
         $parameter = [
             'response_type' => urlencode('code'),
-            'client_id' => urlencode($config->client_id),
-            'scope' => urlencode($config->client_scope),
+            'client_id' => urlencode($config['client_id']),
+            'scope' => urlencode($config['client_scope']),
             'state' => urlencode('helloworld'),
             'redirect_uri' => $host.'/callback'
         ];
@@ -38,8 +39,8 @@ class LineAuthorizationTest extends TestCase{
         $newUrl = $host . "?" . http_build_query($parameter);
 
         $afterCreateUrl = $host . "?response_type=". urlencode('code') .
-            "&client_id=". $config->client_id .
-            "&scope=". urlencode($config->client_scope) .
+            "&client_id=". $config['client_id'] .
+            "&scope=". urlencode($config['client_scope']) .
             "&state=". urlencode('helloworld') .
             "&redirect_uri=". urlencode($host ."/callback");
 
