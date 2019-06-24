@@ -1,4 +1,4 @@
-# Line Login For PHP (dev) unofficial 
+# Line Login For PHP  unofficial 
 
 [![Build Status](https://travis-ci.org/slps970093/LineLogin-ForPHP.svg?branch=master)](https://travis-ci.org/slps970093/LineLogin-ForPHP)
 
