@@ -32,17 +32,16 @@ class LineAuthorizationTest extends TestCase{
             'response_type' => urlencode('code'),
             'client_id' => urlencode($config['client_id']),
             'scope' => urlencode($config['client_scope']),
-            'state' => urlencode('helloworld'),
-            'redirect_uri' => $host.'/callback'
+            'state' => urlencode('helloworld')
         ];
 
-        $newUrl = $host . "?" . http_build_query($parameter);
+        $newUrl = $host . "?" . http_build_query($parameter) . "&redirect_uri=" . $host.'/callback';
 
         $afterCreateUrl = $host . "?response_type=". urlencode('code') .
             "&client_id=". $config['client_id'] .
             "&scope=". urlencode($config['client_scope']) .
             "&state=". urlencode('helloworld') .
-            "&redirect_uri=". urlencode($host ."/callback");
+            "&redirect_uri=". $host ."/callback";
 
         $this->assertEquals($afterCreateUrl,$newUrl);
     }

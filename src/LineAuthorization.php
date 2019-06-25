@@ -25,13 +25,12 @@ class LineAuthorization{
         $parameter = [
             'response_type' => 'code',
             'client_id' => $config[ $this->configManager::CLIENT_ID ],
-            'state' => uniqid(15),
-            'redirect_uri' => $config[ $this->configManager::CLIENT_REDIRECT_URI ]
+            'state' => uniqid(15)
         ];
 
         $host = "https://access.line.me/oauth2/v2.1/authorize" ;
 
-        $url = $host . "?" . http_build_query($parameter) . "&scope=". $scope;
+        $url = $host . "?" . http_build_query($parameter) . "&scope=". $scope . "&redirect_uri=" . $config[ $this->configManager::CLIENT_REDIRECT_URI ];
 
         return $url;
     }
